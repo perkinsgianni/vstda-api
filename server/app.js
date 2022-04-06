@@ -1,5 +1,5 @@
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -26,8 +26,11 @@ let initialData = [
 ];
 // console.log(initialData)
 
-// middleware that parses json
+// JSON-parsing middleware
 app.use(bodyParser.json());
+
+// morgan 'dev' middleware
+app.use(morgan('dev'));
 
 // response of GET req to / route
 app.get('/', (req, res) => {
@@ -74,6 +77,10 @@ app.route('/api/TodoItems/:number')
     // delete single to-do item
     .delete((req, res) => {
         res.send(initialData[req.params.number]) 
+    })
+    // update to-do item
+    .put((req, res) => {
+        res.send(initialData[req.params.number])
     })
 
 module.exports = app;
