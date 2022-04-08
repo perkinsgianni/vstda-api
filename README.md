@@ -1,0 +1,1 @@
+Using the mock data and contract, implement an API server using ExpressJS. You may find it helpful to use Postman, to verify your code is working as expected.
